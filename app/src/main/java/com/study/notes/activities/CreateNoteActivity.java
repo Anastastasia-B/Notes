@@ -82,7 +82,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             String randomColor = colors[random.nextInt(colors.length)];
             note.setColor(randomColor);
 
-            String dateTime = new SimpleDateFormat("EEEE, d MMMM yyyy HH:mm a", Locale.getDefault()).format(new Date());
+            String dateTime = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault()).format(new Date());
             note.setDateTime(dateTime);
         } else {
             note.setId(alreadyExistingNote.getId());
