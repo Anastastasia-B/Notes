@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Notes</string>
+    <string name="search_notes">Search Notes</string>
+    <string name="save">Save</string>
+    <string name="note_title">Title</string>
+    <string name="type_something">Type something...</string>
+</resources>
