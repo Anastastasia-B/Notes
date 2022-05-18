@@ -9,7 +9,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.study.notes.R;
@@ -58,6 +61,26 @@ public class MainActivity extends AppCompatActivity implements NoteListener {
         notesView.setAdapter(notesAdapter);
 
         getNotes(REQUEST_CODE_INITIAL);
+
+        EditText inputSearch = findViewById(R.id.searchInput);
+        inputSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                notesAdapter.cancelTimer();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (noteList.size() > 0) {
+                    notesAdapter.searchNotes(editable.toString());
+                }
+            }
+        });
     }
 
     private void getNotes(int requestCode) {
